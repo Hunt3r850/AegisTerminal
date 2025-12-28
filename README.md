@@ -1,55 +1,99 @@
-# ManusPentestTool: Suite de Automatización para Hacking Ético
+# 🛡️ AegisTerminal: The Shield of Security
 
-## 🛡️ Descripción General
+## 🌟 Descripción General
 
-**ManusPentestTool** es una suite de automatización de código abierto diseñada para simplificar y acelerar las tareas comunes de **Pentesting** y **Hacking Ético**. Inspirada en herramientas como `lscript`, esta suite proporciona una interfaz de menú fácil de usar para gestionar herramientas de red, realizar auditorías WiFi y automatizar procesos de explotación.
+**AegisTerminal** es una suite de automatización avanzada diseñada para simplificar y acelerar las tareas de **Pentesting** y **Hacking Ético**. Inspirada en la eficiencia de herramientas como `lscript`, AegisTerminal proporciona una interfaz de línea de comandos (CLI) modular y fácil de usar para gestionar herramientas de red, realizar escaneos de vulnerabilidades web y automatizar procesos de seguridad.
 
-El objetivo principal es reducir la cantidad de comandos a memorizar y el tiempo dedicado a la configuración inicial, permitiendo al profesional de seguridad centrarse en el análisis y la estrategia.
+El nombre **Aegis** (del griego antiguo *Aigis*, que significa "escudo") refleja el propósito de la herramienta: actuar como un escudo para el profesional de seguridad, automatizando las tareas repetitivas para que pueda centrarse en la estrategia y el análisis.
 
 ## ⚙️ Características Principales
 
-| Categoría | Funcionalidades |
-| :--- | :--- |
-| **Gestión de Sistema** | Cambio rápido de dirección MAC, visualización de IP pública/privada, gestión de interfaces de red. |
-| **Auditoría WiFi** | Escaneo de redes, automatización de captura de handshakes WPA/WPA2, activación de modo monitor. |
-| **Herramientas Web** | Menús preconfigurados para escaneos con Nmap y automatización de pruebas de inyección SQL con SQLMap. |
-| **Explotación** | Generación simplificada de payloads con `msfvenom` y configuración de listeners de Metasploit. |
+| Categoría | Funcionalidades Implementadas | Herramientas Utilizadas |
+| :--- | :--- | :--- |
+| **System & Identity** | Cambio de dirección MAC, visualización de IP pública/privada. | `macchanger`, `ifconfig`, `curl` |
+| **Web Scanning** | Escaneo general de vulnerabilidades web, escaneo específico de WordPress. | `Nikto`, `WPScan` |
+| **Wireless Auditing** | *Módulo en desarrollo* | `aircrack-ng`, `reaver` (futuro) |
+| **Network Recon** | *Módulo en desarrollo* | `Nmap` (futuro) |
+| **Exploitation** | *Módulo en desarrollo* | `msfvenom`, `Metasploit` (futuro) |
 
 ## 💻 Instalación (Kali Linux Recomendado)
 
-**ManusPentestTool** está diseñado para funcionar de manera óptima en **Kali Linux** o distribuciones basadas en Debian con las herramientas de seguridad preinstaladas.
+**AegisTerminal** está diseñado para funcionar en **Kali Linux** o cualquier distribución basada en Debian con las herramientas de seguridad preinstaladas. El script `setup.sh` se encarga de instalar automáticamente todas las dependencias necesarias, incluyendo `Nikto` y `WPScan`.
 
 1. **Clonar el Repositorio:**
-   \`\`\`bash
-   git clone https://github.com/TU_USUARIO/ManusPentestTool.git
-   cd ManusPentestTool
-   \`\`\`
+   ```bash
+   git clone https://github.com/Hunt3r850/AegisTerminal.git
+   cd AegisTerminal
+   ```
 
 2. **Ejecutar el Script de Instalación:**
    Debe ejecutar el script con permisos de superusuario (`root`) para instalar dependencias y crear el enlace simbólico.
 
-   \`\`\`bash
+   ```bash
    sudo chmod +x setup.sh
    sudo ./setup.sh
-   \`\`\`
+   ```
 
-   El script instalará las dependencias necesarias (`git`, `curl`, `nmap`, `macchanger`, `aircrack-ng`) y creará un enlace simbólico para que pueda ejecutar la herramienta desde cualquier lugar.
+   El script instalará dependencias como `git`, `curl`, `nmap`, `macchanger`, `aircrack-ng`, `ruby`, `Nikto` y `WPScan`.
 
 ## ▶️ Uso
 
-Una vez instalado, simplemente escriba `manus` en su terminal para iniciar la suite:
+Una vez instalado, simplemente escriba `aegis` en su terminal para iniciar la suite:
 
-\`\`\`bash
-manus
-\`\`\`
+```bash
+aegis
+```
 
 Se le presentará un menú interactivo para navegar por las diferentes categorías de herramientas.
 
+## 📝 Ejemplos de Uso por Módulo
+
+A continuación, se detallan los pasos para utilizar las funcionalidades implementadas en la versión actual.
+
+### 1. System & Identity
+
+Este módulo permite gestionar rápidamente la identidad de red.
+
+| Opción | Descripción |
+| :--- | :--- |
+| **1) Randomize MAC Address** | Cambia la dirección MAC de una interfaz de red especificada a un valor aleatorio. |
+| **2) Show Network Info** | Muestra la dirección IP privada y realiza una consulta para obtener la IP pública. |
+
+**Ejemplo de uso:**
+
+1.  Inicie AegisTerminal: `aegis`
+2.  Seleccione la opción **1) System & Identity**.
+3.  Para cambiar la MAC, seleccione **1) Randomize MAC Address**.
+4.  Cuando se le solicite, ingrese el nombre de la interfaz (ej. `eth0` o `wlan0`).
+
+### 2. Web Vulnerability Scanning
+
+Este módulo integra herramientas líderes para el escaneo de vulnerabilidades web.
+
+| Opción | Herramienta | Descripción |
+| :--- | :--- | :--- |
+| **1) General Scan** | Nikto | Realiza un escaneo exhaustivo de servidores web en busca de archivos peligrosos, CGIs obsoletos y problemas de configuración. |
+| **2) WordPress Scan** | WPScan | Escaneo específico para sitios WordPress, buscando vulnerabilidades en el core, plugins y temas. |
+
+**Ejemplo de uso (Escaneo con Nikto):**
+
+1.  Inicie AegisTerminal: `aegis`
+2.  Seleccione la opción **3) Web Vulnerability Scanning**.
+3.  Seleccione **1) General Scan (Nikto)**.
+4.  Cuando se le solicite, ingrese la URL objetivo (ej. `http://testphp.vulnweb.com`).
+
+**Ejemplo de uso (Escaneo con WPScan):**
+
+1.  Inicie AegisTerminal: `aegis`
+2.  Seleccione la opción **3) Web Vulnerability Scanning**.
+3.  Seleccione **2) WordPress Scan (WPScan)**.
+4.  Cuando se le solicite, ingrese la URL de WordPress (ej. `http://example.com/wp`).
+
 ## ⚠️ Descargo de Responsabilidad
 
-**ESTA HERRAMIENTA ES SÓLO PARA FINES EDUCATIVOS Y DE PRUEBAS DE PENETRACIÓN AUTORIZADAS.**
+**AegisTerminal es una herramienta de seguridad diseñada EXCLUSIVAMENTE para fines educativos y pruebas de penetración autorizadas.**
 
-El uso de **ManusPentestTool** para atacar sistemas sin permiso previo y explícito es ilegal y poco ético. El desarrollador no se hace responsable del mal uso o de cualquier daño causado por esta herramienta. **¡Sea legal y ético!**
+El uso de esta herramienta para acceder o dañar sistemas sin el permiso explícito y por escrito del propietario es ilegal y viola los principios del hacking ético. El desarrollador no se hace responsable del mal uso o de cualquier daño causado por esta herramienta. **¡Practique siempre el hacking ético!**
 
 ## 📄 Licencia
 
