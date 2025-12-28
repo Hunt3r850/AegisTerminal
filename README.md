@@ -13,13 +13,13 @@ El nombre **Aegis** (del griego antiguo *Aigis*, que significa "escudo") refleja
 | **System & Identity** | Cambio de dirección MAC, visualización de IP pública/privada. | `macchanger`, `ifconfig`, `curl` |
 | **Web Scanning** | Escaneo general de vulnerabilidades web, escaneo específico de WordPress. | `Nikto`, `WPScan` |
 | **Brute Force** | Ataques de fuerza bruta para servicios SSH y FTP. | `Hydra` |
+| **Network Recon** | Escaneo de puertos avanzado (Stealth, Versión, Agresivo). | `Nmap` |
 | **Wireless Auditing** | *Módulo en desarrollo* | `aircrack-ng`, `reaver` (futuro) |
-| **Network Recon** | *Módulo en desarrollo* | `Nmap` (futuro) |
 | **Exploitation** | *Módulo en desarrollo* | `msfvenom`, `Metasploit` (futuro) |
 
 ## 💻 Instalación (Kali Linux Recomendado)
 
-**AegisTerminal** está diseñado para funcionar en **Kali Linux** o cualquier distribución basada en Debian con las herramientas de seguridad preinstaladas. El script `setup.sh` se encarga de instalar automáticamente todas las dependencias necesarias, incluyendo `Nikto`, `WPScan` y **Hydra**.
+**AegisTerminal** está diseñado para funcionar en **Kali Linux** o cualquier distribución basada en Debian con las herramientas de seguridad preinstaladas. El script `setup.sh` se encarga de instalar automáticamente todas las dependencias necesarias.
 
 1. **Clonar el Repositorio:**
    ```bash
@@ -35,7 +35,7 @@ El nombre **Aegis** (del griego antiguo *Aigis*, que significa "escudo") refleja
    sudo ./setup.sh
    ```
 
-   El script instalará dependencias como `git`, `curl`, `nmap`, `macchanger`, `aircrack-ng`, `ruby`, `Nikto`, `WPScan` y **Hydra**.
+   El script instalará dependencias como `git`, `curl`, `nmap`, `macchanger`, `aircrack-ng`, `ruby`, `Nikto`, `WPScan` y `Hydra`.
 
 ## ▶️ Uso
 
@@ -99,8 +99,22 @@ Este módulo utiliza **Hydra** para realizar ataques de fuerza bruta contra serv
 3.  Seleccione **1) SSH Brute Force**.
 4.  Ingrese la IP del objetivo, la ruta a su lista de usuarios (`-L`) y la ruta a su lista de contraseñas (`-P`).
 
-    *Ruta de ejemplo para lista de usuarios:* `/usr/share/wordlists/metasploit/unix_users.txt`
-    *Ruta de ejemplo para lista de contraseñas:* `/usr/share/wordlists/rockyou.txt`
+### 4. Network Reconnaissance
+
+Este módulo automatiza escaneos avanzados de **Nmap** para el reconocimiento de red.
+
+| Opción | Comando Nmap | Descripción |
+| :--- | :--- | :--- |
+| **1) Stealth Scan** | `nmap -sS` | Realiza un escaneo TCP SYN (sigiloso) para evitar el registro completo de la conexión. |
+| **2) Service Version Detection** | `nmap -sV` | Intenta determinar la versión del servicio que se ejecuta en los puertos abiertos. |
+| **3) Aggressive Scan** | `nmap -A` | Activa la detección de SO, la detección de versiones, el escaneo de scripts y el traceroute. |
+
+**Ejemplo de uso (Detección de Versiones):**
+
+1.  Inicie AegisTerminal: `aegis`
+2.  Seleccione la opción **5) Network Reconnaissance**.
+3.  Seleccione **2) Service Version Detection**.
+4.  Ingrese la IP o rango de red del objetivo (ej. `192.168.1.1/24`).
 
 ## ⚠️ Descargo de Responsabilidad
 

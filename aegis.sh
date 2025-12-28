@@ -25,7 +25,7 @@ show_banner() {
     echo "               __/ |                                                "
     echo "              |___/                                                 "
     echo -e "${NC}"
-    echo -e "${PURPLE}      [ AegisTerminal v1.2 - The Shield of Security ]${NC}"
+    echo -e "${PURPLE}      [ AegisTerminal v1.3 - The Shield of Security ]${NC}"
     echo " --------------------------------------------------------------"
 }
 
@@ -36,7 +36,7 @@ main_menu() {
     echo -e "${GREEN}2)${NC} Wireless Auditing (WiFi, Handshake, WPS)"
     echo -e "${GREEN}3)${NC} Web Vulnerability Scanning (Nikto, WPScan)"
     echo -e "${GREEN}4)${NC} Brute Force Attacks (Hydra - SSH, FTP)"
-    echo -e "${GREEN}5)${NC} Network Reconnaissance (Nmap, Discovery)"
+    echo -e "${GREEN}5)${NC} Network Reconnaissance (Nmap Advanced)"
     echo -e "${GREEN}6)${NC} Exploitation Framework (Metasploit, Payloads)"
     echo -e "${GREEN}7)${NC} Update AegisTerminal"
     echo -e "${GREEN}0)${NC} Exit"
@@ -56,7 +56,35 @@ main_menu() {
     esac
 }
 
-# Módulo Brute Force (Nuevo)
+# Módulo Network Recon (Nuevo)
+network_menu() {
+    show_banner
+    echo -e "${BLUE}--- Network Reconnaissance (Nmap) ---${NC}"
+    echo -e "1) Stealth Scan (-sS)"
+    echo -e "2) Service Version Detection (-sV)"
+    echo -e "3) Aggressive Scan (-A)"
+    echo -e "0) Back"
+    echo ""
+    read -p "Aegis/Network > " net_choice
+    case $net_choice in
+        1|2|3)
+            read -p "Enter target IP/Host/Range: " target
+            if [[ "$net_choice" == "1" ]]; then
+                nmap -sS -T4 "$target"
+            elif [[ "$net_choice" == "2" ]]; then
+                nmap -sV -T4 "$target"
+            else
+                nmap -A -T4 "$target"
+            fi
+            read -p "Press enter to continue..."
+            network_menu
+            ;;
+        0) main_menu ;;
+        *) network_menu ;;
+    esac
+}
+
+# Módulo Brute Force
 brute_force_menu() {
     show_banner
     echo -e "${BLUE}--- Brute Force Attacks (Hydra) ---${NC}"
@@ -137,7 +165,6 @@ system_menu() {
 }
 
 wifi_menu() { show_banner; echo "WiFi Module - Under Construction"; sleep 1; main_menu; }
-network_menu() { show_banner; echo "Network Module - Under Construction"; sleep 1; main_menu; }
 exploit_menu() { show_banner; echo "Exploit Module - Under Construction"; sleep 1; main_menu; }
 update_tool() { echo "Checking for updates..."; sleep 1; main_menu; }
 
