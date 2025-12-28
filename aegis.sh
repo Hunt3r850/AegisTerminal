@@ -25,7 +25,7 @@ show_banner() {
     echo "               __/ |                                                "
     echo "              |___/                                                 "
     echo -e "${NC}"
-    echo -e "${PURPLE}      [ AegisTerminal v1.1 - The Shield of Security ]${NC}"
+    echo -e "${PURPLE}      [ AegisTerminal v1.2 - The Shield of Security ]${NC}"
     echo " --------------------------------------------------------------"
 }
 
@@ -35,9 +35,10 @@ main_menu() {
     echo -e "${GREEN}1)${NC} System & Identity (MAC, IP, Anonymity)"
     echo -e "${GREEN}2)${NC} Wireless Auditing (WiFi, Handshake, WPS)"
     echo -e "${GREEN}3)${NC} Web Vulnerability Scanning (Nikto, WPScan)"
-    echo -e "${GREEN}4)${NC} Network Reconnaissance (Nmap, Discovery)"
-    echo -e "${GREEN}5)${NC} Exploitation Framework (Metasploit, Payloads)"
-    echo -e "${GREEN}6)${NC} Update AegisTerminal"
+    echo -e "${GREEN}4)${NC} Brute Force Attacks (Hydra - SSH, FTP)"
+    echo -e "${GREEN}5)${NC} Network Reconnaissance (Nmap, Discovery)"
+    echo -e "${GREEN}6)${NC} Exploitation Framework (Metasploit, Payloads)"
+    echo -e "${GREEN}7)${NC} Update AegisTerminal"
     echo -e "${GREEN}0)${NC} Exit"
     echo ""
     read -p "Aegis > " choice
@@ -46,11 +47,40 @@ main_menu() {
         1) system_menu ;;
         2) wifi_menu ;;
         3) web_vulnerability_menu ;;
-        4) network_menu ;;
-        5) exploit_menu ;;
-        6) update_tool ;;
+        4) brute_force_menu ;;
+        5) network_menu ;;
+        6) exploit_menu ;;
+        7) update_tool ;;
         0) exit 0 ;;
         *) echo -e "${RED}[!] Invalid option${NC}"; sleep 1; main_menu ;;
+    esac
+}
+
+# Módulo Brute Force (Nuevo)
+brute_force_menu() {
+    show_banner
+    echo -e "${BLUE}--- Brute Force Attacks (Hydra) ---${NC}"
+    echo -e "1) SSH Brute Force"
+    echo -e "2) FTP Brute Force"
+    echo -e "0) Back"
+    echo ""
+    read -p "Aegis/Brute > " brute_choice
+    case $brute_choice in
+        1|2)
+            read -p "Enter target IP/Host: " target
+            read -p "Enter path to User List: " user_list
+            read -p "Enter path to Password List: " pass_list
+            
+            if [[ "$brute_choice" == "1" ]]; then
+                hydra -L "$user_list" -P "$pass_list" ssh://"$target" -t 4 -V
+            else
+                hydra -L "$user_list" -P "$pass_list" ftp://"$target" -t 4 -V
+            fi
+            read -p "Press enter to continue..."
+            brute_force_menu
+            ;;
+        0) main_menu ;;
+        *) brute_force_menu ;;
     esac
 }
 

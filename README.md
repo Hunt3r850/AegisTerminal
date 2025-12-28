@@ -12,13 +12,14 @@ El nombre **Aegis** (del griego antiguo *Aigis*, que significa "escudo") refleja
 | :--- | :--- | :--- |
 | **System & Identity** | Cambio de dirección MAC, visualización de IP pública/privada. | `macchanger`, `ifconfig`, `curl` |
 | **Web Scanning** | Escaneo general de vulnerabilidades web, escaneo específico de WordPress. | `Nikto`, `WPScan` |
+| **Brute Force** | Ataques de fuerza bruta para servicios SSH y FTP. | `Hydra` |
 | **Wireless Auditing** | *Módulo en desarrollo* | `aircrack-ng`, `reaver` (futuro) |
 | **Network Recon** | *Módulo en desarrollo* | `Nmap` (futuro) |
 | **Exploitation** | *Módulo en desarrollo* | `msfvenom`, `Metasploit` (futuro) |
 
 ## 💻 Instalación (Kali Linux Recomendado)
 
-**AegisTerminal** está diseñado para funcionar en **Kali Linux** o cualquier distribución basada en Debian con las herramientas de seguridad preinstaladas. El script `setup.sh` se encarga de instalar automáticamente todas las dependencias necesarias, incluyendo `Nikto` y `WPScan`.
+**AegisTerminal** está diseñado para funcionar en **Kali Linux** o cualquier distribución basada en Debian con las herramientas de seguridad preinstaladas. El script `setup.sh` se encarga de instalar automáticamente todas las dependencias necesarias, incluyendo `Nikto`, `WPScan` y **Hydra**.
 
 1. **Clonar el Repositorio:**
    ```bash
@@ -34,7 +35,7 @@ El nombre **Aegis** (del griego antiguo *Aigis*, que significa "escudo") refleja
    sudo ./setup.sh
    ```
 
-   El script instalará dependencias como `git`, `curl`, `nmap`, `macchanger`, `aircrack-ng`, `ruby`, `Nikto` y `WPScan`.
+   El script instalará dependencias como `git`, `curl`, `nmap`, `macchanger`, `aircrack-ng`, `ruby`, `Nikto`, `WPScan` y **Hydra**.
 
 ## ▶️ Uso
 
@@ -82,12 +83,24 @@ Este módulo integra herramientas líderes para el escaneo de vulnerabilidades w
 3.  Seleccione **1) General Scan (Nikto)**.
 4.  Cuando se le solicite, ingrese la URL objetivo (ej. `http://testphp.vulnweb.com`).
 
-**Ejemplo de uso (Escaneo con WPScan):**
+### 3. Brute Force Attacks
+
+Este módulo utiliza **Hydra** para realizar ataques de fuerza bruta contra servicios de red.
+
+| Opción | Servicio | Descripción |
+| :--- | :--- | :--- |
+| **1) SSH Brute Force** | SSH | Intenta iniciar sesión en un servidor SSH utilizando listas de usuarios y contraseñas. |
+| **2) FTP Brute Force** | FTP | Intenta iniciar sesión en un servidor FTP utilizando listas de usuarios y contraseñas. |
+
+**Ejemplo de uso (Ataque SSH):**
 
 1.  Inicie AegisTerminal: `aegis`
-2.  Seleccione la opción **3) Web Vulnerability Scanning**.
-3.  Seleccione **2) WordPress Scan (WPScan)**.
-4.  Cuando se le solicite, ingrese la URL de WordPress (ej. `http://example.com/wp`).
+2.  Seleccione la opción **4) Brute Force Attacks**.
+3.  Seleccione **1) SSH Brute Force**.
+4.  Ingrese la IP del objetivo, la ruta a su lista de usuarios (`-L`) y la ruta a su lista de contraseñas (`-P`).
+
+    *Ruta de ejemplo para lista de usuarios:* `/usr/share/wordlists/metasploit/unix_users.txt`
+    *Ruta de ejemplo para lista de contraseñas:* `/usr/share/wordlists/rockyou.txt`
 
 ## ⚠️ Descargo de Responsabilidad
 
