@@ -11,15 +11,15 @@ El nombre **Aegis** (del griego antiguo *Aigis*, que significa "escudo") refleja
 | Categoría | Funcionalidades Implementadas | Herramientas Utilizadas |
 | :--- | :--- | :--- |
 | **System & Identity** | Cambio de dirección MAC, visualización de IP pública/privada. | `macchanger`, `ifconfig`, `curl` |
+| **Wireless Auditing** | Modo Monitor, Escaneo de Redes, Captura de Handshakes WPA/WPA2. | `aircrack-ng` suite |
 | **Web Scanning** | Escaneo general de vulnerabilidades web, escaneo específico de WordPress. | `Nikto`, `WPScan` |
 | **Brute Force** | Ataques de fuerza bruta para servicios SSH y FTP. | `Hydra` |
 | **Network Recon** | Escaneo de puertos avanzado (Stealth, Versión, Agresivo). | `Nmap` |
 | **Exploitation** | Generación de Payloads con `msfvenom` y configuración de Listeners con `msfconsole`. | `Metasploit Framework` |
-| **Wireless Auditing** | *Módulo en desarrollo* | `aircrack-ng`, `reaver` (futuro) |
 
 ## 💻 Instalación (Kali Linux Recomendado)
 
-**AegisTerminal** está diseñado para funcionar en **Kali Linux** o cualquier distribución basada en Debian con las herramientas de seguridad preinstaladas. El script `setup.sh` se encarga de instalar automáticamente todas las dependencias necesarias, incluyendo **Metasploit Framework**.
+**AegisTerminal** está diseñado para funcionar en **Kali Linux** o cualquier distribución basada en Debian con las herramientas de seguridad preinstaladas. El script `setup.sh` se encarga de instalar automáticamente todas las dependencias necesarias.
 
 1. **Clonar el Repositorio:**
    ```bash
@@ -35,7 +35,7 @@ El nombre **Aegis** (del griego antiguo *Aigis*, que significa "escudo") refleja
    sudo ./setup.sh
    ```
 
-   El script instalará dependencias como `git`, `curl`, `nmap`, `macchanger`, `aircrack-ng`, `ruby`, `Nikto`, `WPScan`, `Hydra` y **Metasploit Framework** (si no está ya instalado).
+   El script instalará dependencias como `git`, `curl`, `nmap`, `macchanger`, `aircrack-ng`, `ruby`, `Nikto`, `WPScan`, `Hydra` y `Metasploit Framework`.
 
 ## ▶️ Uso
 
@@ -60,7 +60,24 @@ Este módulo permite gestionar rápidamente la identidad de red.
 | **1) Randomize MAC Address** | Cambia la dirección MAC de una interfaz de red especificada a un valor aleatorio. |
 | **2) Show Network Info** | Muestra la dirección IP privada y realiza una consulta para obtener la IP pública. |
 
-### 2. Web Vulnerability Scanning
+### 2. Wireless Auditing
+
+Este módulo utiliza la suite **aircrack-ng** para la auditoría de redes inalámbricas.
+
+| Opción | Herramienta | Descripción |
+| :--- | :--- | :--- |
+| **1) Enable Monitor Mode** | `airmon-ng start` | Pone la interfaz inalámbrica en modo monitor. |
+| **2) Disable Monitor Mode** | `airmon-ng stop` | Devuelve la interfaz a modo gestionado. |
+| **3) Scan Networks** | `airodump-ng` | Escanea redes cercanas para obtener BSSID, canal y clientes. |
+| **4) Capture Handshake** | `airodump-ng` | Captura el handshake WPA/WPA2 de un punto de acceso específico. |
+
+**Ejemplo de Uso (Captura de Handshake):**
+
+1.  **Activar Modo Monitor:** Seleccione **1) Enable Monitor Mode** e ingrese su interfaz (ej. `wlan0`). Esto creará una nueva interfaz (ej. `wlan0mon`).
+2.  **Escanear:** Seleccione **3) Scan Networks** e ingrese la interfaz monitor (ej. `wlan0mon`). Identifique el BSSID y el canal del objetivo.
+3.  **Capturar:** Seleccione **4) Capture Handshake**. Ingrese la interfaz monitor, el BSSID del objetivo, el canal y un nombre de archivo de salida (ej. `handshake_target`).
+
+### 3. Web Vulnerability Scanning
 
 Este módulo integra herramientas líderes para el escaneo de vulnerabilidades web.
 
@@ -69,7 +86,7 @@ Este módulo integra herramientas líderes para el escaneo de vulnerabilidades w
 | **1) General Scan** | Nikto | Realiza un escaneo exhaustivo de servidores web en busca de archivos peligrosos, CGIs obsoletos y problemas de configuración. |
 | **2) WordPress Scan** | WPScan | Escaneo específico para sitios WordPress, buscando vulnerabilidades en el core, plugins y temas. |
 
-### 3. Brute Force Attacks
+### 4. Brute Force Attacks
 
 Este módulo utiliza **Hydra** para realizar ataques de fuerza bruta contra servicios de red.
 
@@ -78,7 +95,7 @@ Este módulo utiliza **Hydra** para realizar ataques de fuerza bruta contra serv
 | **1) SSH Brute Force** | SSH | Intenta iniciar sesión en un servidor SSH utilizando listas de usuarios y contraseñas. |
 | **2) FTP Brute Force** | FTP | Intenta iniciar sesión en un servidor FTP utilizando listas de usuarios y contraseñas. |
 
-### 4. Network Reconnaissance
+### 5. Network Reconnaissance
 
 Este módulo automatiza escaneos avanzados de **Nmap** para el reconocimiento de red.
 
@@ -88,7 +105,7 @@ Este módulo automatiza escaneos avanzados de **Nmap** para el reconocimiento de
 | **2) Service Version Detection** | `nmap -sV` | Intenta determinar la versión del servicio que se ejecuta en los puertos abiertos. |
 | **3) Aggressive Scan** | `nmap -A` | Activa la detección de SO, la detección de versiones, el escaneo de scripts y el traceroute. |
 
-### 5. Exploitation Framework
+### 6. Exploitation Framework
 
 Este módulo automatiza la generación de payloads y la configuración de listeners con **Metasploit**.
 
@@ -96,23 +113,6 @@ Este módulo automatiza la generación de payloads y la configuración de listen
 | :--- | :--- | :--- |
 | **1) Generate Payload** | `msfvenom` | Crea un payload de Meterpreter para Windows, Linux o Android. |
 | **2) Start Multi-Handler** | `msfconsole` | Configura y lanza un listener para recibir la conexión inversa del payload. |
-
-**Ejemplo de Uso (Generación de Payload y Listener):**
-
-Este es un ejemplo clásico de cómo obtener una shell inversa en un sistema objetivo (asumiendo que el payload es entregado y ejecutado por el objetivo).
-
-1.  **Obtener su IP Local (LHOST):** Necesitará su dirección IP en la red local (ej. `192.168.1.10`).
-2.  **Generar el Payload:**
-    *   Inicie AegisTerminal: `aegis`
-    *   Seleccione **5) Exploitation Framework**.
-    *   Seleccione **1) Generate Payload**.
-    *   Ingrese la plataforma (ej. `1` para Windows), su LHOST, un LPORT (ej. `4444`) y el nombre del archivo (ej. `shell.exe`).
-3.  **Configurar el Listener:**
-    *   En el mismo menú, seleccione **2) Start Multi-Handler**.
-    *   Ingrese el mismo LHOST y LPORT que usó para el payload.
-    *   Seleccione el tipo de payload (ej. `1` para Windows).
-    *   `msfconsole` se iniciará y esperará la conexión.
-4.  **Ejecución:** Una vez que el archivo `shell.exe` sea ejecutado en el sistema objetivo, el listener de Metasploit recibirá la conexión y le proporcionará una sesión de Meterpreter.
 
 ## ⚠️ Descargo de Responsabilidad
 

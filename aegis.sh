@@ -25,7 +25,7 @@ show_banner() {
     echo "               __/ |                                                "
     echo "              |___/                                                 "
     echo -e "${NC}"
-    echo -e "${PURPLE}      [ AegisTerminal v1.4 - The Shield of Security ]${NC}"
+    echo -e "${PURPLE}      [ AegisTerminal v1.5 - The Shield of Security ]${NC}"
     echo " --------------------------------------------------------------"
 }
 
@@ -33,7 +33,7 @@ show_banner() {
 main_menu() {
     show_banner
     echo -e "${GREEN}1)${NC} System & Identity (MAC, IP, Anonymity)"
-    echo -e "${GREEN}2)${NC} Wireless Auditing (WiFi, Handshake, WPS)"
+    echo -e "${GREEN}2)${NC} Wireless Auditing (WiFi, Handshake, Monitor)"
     echo -e "${GREEN}3)${NC} Web Vulnerability Scanning (Nikto, WPScan)"
     echo -e "${GREEN}4)${NC} Brute Force Attacks (Hydra - SSH, FTP)"
     echo -e "${GREEN}5)${NC} Network Reconnaissance (Nmap Advanced)"
@@ -56,7 +56,49 @@ main_menu() {
     esac
 }
 
-# Módulo Exploitation (Nuevo)
+# Módulo Wireless (Nuevo)
+wifi_menu() {
+    show_banner
+    echo -e "${BLUE}--- Wireless Auditing (Aircrack-ng) ---${NC}"
+    echo -e "1) Enable Monitor Mode"
+    echo -e "2) Disable Monitor Mode"
+    echo -e "3) Scan Networks (airodump-ng)"
+    echo -e "4) Capture Handshake"
+    echo -e "0) Back"
+    echo ""
+    read -p "Aegis/WiFi > " wifi_choice
+    case $wifi_choice in
+        1)
+            read -p "Enter interface (e.g., wlan0): " iface
+            airmon-ng start "$iface"
+            read -p "Press enter to continue..."
+            wifi_menu
+            ;;
+        2)
+            read -p "Enter monitor interface (e.g., wlan0mon): " iface
+            airmon-ng stop "$iface"
+            read -p "Press enter to continue..."
+            wifi_menu
+            ;;
+        3)
+            read -p "Enter monitor interface: " iface
+            airodump-ng "$iface"
+            wifi_menu
+            ;;
+        4)
+            read -p "Enter monitor interface: " iface
+            read -p "Enter Target BSSID: " bssid
+            read -p "Enter Channel: " chan
+            read -p "Enter Output Filename: " out
+            airodump-ng --bssid "$bssid" -c "$chan" -w "$out" "$iface"
+            wifi_menu
+            ;;
+        0) main_menu ;;
+        *) wifi_menu ;;
+    esac
+}
+
+# Módulo Exploitation
 exploit_menu() {
     show_banner
     echo -e "${BLUE}--- Exploitation Framework (Metasploit) ---${NC}"
@@ -207,7 +249,6 @@ system_menu() {
     esac
 }
 
-wifi_menu() { show_banner; echo "WiFi Module - Under Construction"; sleep 1; main_menu; }
 update_tool() { echo "Checking for updates..."; sleep 1; main_menu; }
 
 # Start
