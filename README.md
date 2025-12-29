@@ -14,12 +14,12 @@ El nombre **Aegis** (del griego antiguo *Aigis*, que significa "escudo") refleja
 | **Web Scanning** | Escaneo general de vulnerabilidades web, escaneo específico de WordPress. | `Nikto`, `WPScan` |
 | **Brute Force** | Ataques de fuerza bruta para servicios SSH y FTP. | `Hydra` |
 | **Network Recon** | Escaneo de puertos avanzado (Stealth, Versión, Agresivo). | `Nmap` |
+| **Exploitation** | Generación de Payloads con `msfvenom` y configuración de Listeners con `msfconsole`. | `Metasploit Framework` |
 | **Wireless Auditing** | *Módulo en desarrollo* | `aircrack-ng`, `reaver` (futuro) |
-| **Exploitation** | *Módulo en desarrollo* | `msfvenom`, `Metasploit` (futuro) |
 
 ## 💻 Instalación (Kali Linux Recomendado)
 
-**AegisTerminal** está diseñado para funcionar en **Kali Linux** o cualquier distribución basada en Debian con las herramientas de seguridad preinstaladas. El script `setup.sh` se encarga de instalar automáticamente todas las dependencias necesarias.
+**AegisTerminal** está diseñado para funcionar en **Kali Linux** o cualquier distribución basada en Debian con las herramientas de seguridad preinstaladas. El script `setup.sh` se encarga de instalar automáticamente todas las dependencias necesarias, incluyendo **Metasploit Framework**.
 
 1. **Clonar el Repositorio:**
    ```bash
@@ -35,7 +35,7 @@ El nombre **Aegis** (del griego antiguo *Aigis*, que significa "escudo") refleja
    sudo ./setup.sh
    ```
 
-   El script instalará dependencias como `git`, `curl`, `nmap`, `macchanger`, `aircrack-ng`, `ruby`, `Nikto`, `WPScan` y `Hydra`.
+   El script instalará dependencias como `git`, `curl`, `nmap`, `macchanger`, `aircrack-ng`, `ruby`, `Nikto`, `WPScan`, `Hydra` y **Metasploit Framework** (si no está ya instalado).
 
 ## ▶️ Uso
 
@@ -60,13 +60,6 @@ Este módulo permite gestionar rápidamente la identidad de red.
 | **1) Randomize MAC Address** | Cambia la dirección MAC de una interfaz de red especificada a un valor aleatorio. |
 | **2) Show Network Info** | Muestra la dirección IP privada y realiza una consulta para obtener la IP pública. |
 
-**Ejemplo de uso:**
-
-1.  Inicie AegisTerminal: `aegis`
-2.  Seleccione la opción **1) System & Identity**.
-3.  Para cambiar la MAC, seleccione **1) Randomize MAC Address**.
-4.  Cuando se le solicite, ingrese el nombre de la interfaz (ej. `eth0` o `wlan0`).
-
 ### 2. Web Vulnerability Scanning
 
 Este módulo integra herramientas líderes para el escaneo de vulnerabilidades web.
@@ -76,13 +69,6 @@ Este módulo integra herramientas líderes para el escaneo de vulnerabilidades w
 | **1) General Scan** | Nikto | Realiza un escaneo exhaustivo de servidores web en busca de archivos peligrosos, CGIs obsoletos y problemas de configuración. |
 | **2) WordPress Scan** | WPScan | Escaneo específico para sitios WordPress, buscando vulnerabilidades en el core, plugins y temas. |
 
-**Ejemplo de uso (Escaneo con Nikto):**
-
-1.  Inicie AegisTerminal: `aegis`
-2.  Seleccione la opción **3) Web Vulnerability Scanning**.
-3.  Seleccione **1) General Scan (Nikto)**.
-4.  Cuando se le solicite, ingrese la URL objetivo (ej. `http://testphp.vulnweb.com`).
-
 ### 3. Brute Force Attacks
 
 Este módulo utiliza **Hydra** para realizar ataques de fuerza bruta contra servicios de red.
@@ -91,13 +77,6 @@ Este módulo utiliza **Hydra** para realizar ataques de fuerza bruta contra serv
 | :--- | :--- | :--- |
 | **1) SSH Brute Force** | SSH | Intenta iniciar sesión en un servidor SSH utilizando listas de usuarios y contraseñas. |
 | **2) FTP Brute Force** | FTP | Intenta iniciar sesión en un servidor FTP utilizando listas de usuarios y contraseñas. |
-
-**Ejemplo de uso (Ataque SSH):**
-
-1.  Inicie AegisTerminal: `aegis`
-2.  Seleccione la opción **4) Brute Force Attacks**.
-3.  Seleccione **1) SSH Brute Force**.
-4.  Ingrese la IP del objetivo, la ruta a su lista de usuarios (`-L`) y la ruta a su lista de contraseñas (`-P`).
 
 ### 4. Network Reconnaissance
 
@@ -109,12 +88,31 @@ Este módulo automatiza escaneos avanzados de **Nmap** para el reconocimiento de
 | **2) Service Version Detection** | `nmap -sV` | Intenta determinar la versión del servicio que se ejecuta en los puertos abiertos. |
 | **3) Aggressive Scan** | `nmap -A` | Activa la detección de SO, la detección de versiones, el escaneo de scripts y el traceroute. |
 
-**Ejemplo de uso (Detección de Versiones):**
+### 5. Exploitation Framework
 
-1.  Inicie AegisTerminal: `aegis`
-2.  Seleccione la opción **5) Network Reconnaissance**.
-3.  Seleccione **2) Service Version Detection**.
-4.  Ingrese la IP o rango de red del objetivo (ej. `192.168.1.1/24`).
+Este módulo automatiza la generación de payloads y la configuración de listeners con **Metasploit**.
+
+| Opción | Herramienta | Descripción |
+| :--- | :--- | :--- |
+| **1) Generate Payload** | `msfvenom` | Crea un payload de Meterpreter para Windows, Linux o Android. |
+| **2) Start Multi-Handler** | `msfconsole` | Configura y lanza un listener para recibir la conexión inversa del payload. |
+
+**Ejemplo de Uso (Generación de Payload y Listener):**
+
+Este es un ejemplo clásico de cómo obtener una shell inversa en un sistema objetivo (asumiendo que el payload es entregado y ejecutado por el objetivo).
+
+1.  **Obtener su IP Local (LHOST):** Necesitará su dirección IP en la red local (ej. `192.168.1.10`).
+2.  **Generar el Payload:**
+    *   Inicie AegisTerminal: `aegis`
+    *   Seleccione **5) Exploitation Framework**.
+    *   Seleccione **1) Generate Payload**.
+    *   Ingrese la plataforma (ej. `1` para Windows), su LHOST, un LPORT (ej. `4444`) y el nombre del archivo (ej. `shell.exe`).
+3.  **Configurar el Listener:**
+    *   En el mismo menú, seleccione **2) Start Multi-Handler**.
+    *   Ingrese el mismo LHOST y LPORT que usó para el payload.
+    *   Seleccione el tipo de payload (ej. `1` para Windows).
+    *   `msfconsole` se iniciará y esperará la conexión.
+4.  **Ejecución:** Una vez que el archivo `shell.exe` sea ejecutado en el sistema objetivo, el listener de Metasploit recibirá la conexión y le proporcionará una sesión de Meterpreter.
 
 ## ⚠️ Descargo de Responsabilidad
 

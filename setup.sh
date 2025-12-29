@@ -22,7 +22,8 @@ apt-get update -y
 
 # Core Dependencies
 echo -e "${YELLOW}[*] Installing core dependencies...${NC}"
-apt-get install -y git curl wget net-tools macchanger nmap aircrack-ng hydra python3 python3-pip ruby-full build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev
+# Se añade metasploit-framework a la lista de dependencias
+apt-get install -y git curl wget net-tools macchanger nmap aircrack-ng hydra metasploit-framework python3 python3-pip ruby-full build-essential libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev
 
 # Web Vulnerability Tools
 echo -e "${YELLOW}[*] Installing Web Vulnerability Tools (Nikto & WPScan)...${NC}"

