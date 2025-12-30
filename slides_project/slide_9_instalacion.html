@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body { margin: 0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: 'Space Grotesk', sans-serif;
+            display: flex;
+            overflow: hidden;
+        }
+        .content-area {
+            flex: 1;
+            padding-top: 60px;
+            padding-left: 60px;
+        }
+        .image-area {
+            width: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .side-image {
+            width: 450px;
+            height: 600px;
+            object-fit: cover;
+            opacity: 0.5;
+            border: 1px solid #00FF41;
+        }
+        .header {
+            font-size: 48px;
+            color: #00FF41;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .step-box {
+            margin-bottom: 30px;
+            width: 600px;
+        }
+        .step-title {
+            font-family: 'Fira Code', monospace;
+            font-size: 24px;
+            color: #FF3333;
+            margin-bottom: 10px;
+        }
+        .step-desc {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+        .terminal-cmd {
+            background-color: #000;
+            padding-top: 10px;
+            padding-left: 15px;
+            font-family: 'Fira Code', monospace;
+            color: #00FF41;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-area">
+            <h2 class="header">Instalación y Escalabilidad</h2>
+            
+            <div class="step-box">
+                <div class="step-title">Instalador Inteligente</div>
+                <div class="step-desc">Gestión automatizada de dependencias en Kali Linux y sistemas Debian.</div>
+                <div class="terminal-cmd"># sudo ./setup.sh</div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-title">Arquitectura Modular</div>
+                <div class="step-desc">Estructura de directorios diseñada para la fácil integración de nuevos módulos y herramientas.</div>
+            </div>
+
+            <div class="step-box">
+                <div class="step-title">Enfoque Comunitario</div>
+                <div class="step-desc">Código abierto bajo licencia GPL-3.0, fomentando la colaboración y mejora continua.</div>
+            </div>
+        </div>
+        <div class="image-area">
+            <img src="/home/ubuntu/upload/search_images/OfwPyfN9jRpK.jpg" class="side-image" alt="Security Background">
+        </div>
+    </div>
+</body>
+</html>

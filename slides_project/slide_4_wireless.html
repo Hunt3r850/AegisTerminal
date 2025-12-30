@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body { margin: 0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: 'Space Grotesk', sans-serif;
+            padding-top: 60px;
+            padding-left: 80px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .header {
+            font-size: 48px;
+            color: #00FF41;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 1120px;
+        }
+        .info-box {
+            font-size: 22px;
+            line-height: 1.6;
+        }
+        .info-box h3 {
+            color: #FF3333;
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-transform: uppercase;
+        }
+        .terminal-box {
+            background-color: #000;
+            border: 1px solid #00FF41;
+            padding-top: 20px;
+            padding-left: 20px;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            color: #00FF41;
+            height: 400px;
+            overflow: hidden;
+        }
+        .accent-text {
+            color: #FF3333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <h2 class="header">Auditoría Inalámbrica (WiFi)</h2>
+        <div class="grid-container">
+            <div class="info-box">
+                <h3>Capacidades de la Suite</h3>
+                <p><span class="accent-text">></span> Gestión de interfaces en modo monitor con <span class="accent-text">airmon-ng</span>.</p>
+                <p style="margin-top: 15px;"><span class="accent-text">></span> Escaneo de redes en tiempo real con <span class="accent-text">airodump-ng</span>.</p>
+                <p style="margin-top: 15px;"><span class="accent-text">></span> Captura automatizada de handshakes WPA/WPA2.</p>
+                <p style="margin-top: 15px;"><span class="accent-text">></span> Evaluación de seguridad en infraestructuras inalámbricas.</p>
+            </div>
+            <div class="terminal-box">
+                <div>CH 11 ][ Elapsed: 12 s ][ 2025-12-30 14:00</div>
+                <div style="margin-top: 10px;">BSSID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PWR&nbsp;&nbsp;Beacons&nbsp;&nbsp;#Data, #/s&nbsp;&nbsp;CH&nbsp;&nbsp;MB&nbsp;&nbsp;&nbsp;ENC&nbsp;&nbsp;CIPHER AUTH ESSID</div>
+                <div style="margin-top: 5px; color: #FF3333;">AA:BB:CC:DD:EE:FF&nbsp;&nbsp;-42&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;45&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;11&nbsp;&nbsp;54e&nbsp;&nbsp;WPA2 CCMP&nbsp;&nbsp;&nbsp;PSK&nbsp;&nbsp;Target_WiFi</div>
+                <div style="margin-top: 10px;">BSSID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;STATION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PWR&nbsp;&nbsp;&nbsp;Rate&nbsp;&nbsp;&nbsp;&nbsp;Lost&nbsp;&nbsp;&nbsp;&nbsp;Frames&nbsp;&nbsp;Probe</div>
+                <div style="margin-top: 5px;">AA:BB:CC:DD:EE:FF&nbsp;&nbsp;11:22:33:44:55:66&nbsp;&nbsp;-50&nbsp;&nbsp;&nbsp;&nbsp;0 - 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12</div>
+                <div style="margin-top: 20px; color: #E0E0E0;">[+] WPA HANDSHAKE CAPTURED!</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

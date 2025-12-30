@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body { margin: 0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: 'Space Grotesk', sans-serif;
+            padding-top: 60px;
+            padding-left: 80px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .header {
+            font-size: 48px;
+            color: #00FF41;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            width: 1120px;
+        }
+        .audit-section h3 {
+            font-family: 'Fira Code', monospace;
+            font-size: 32px;
+            color: #FF3333;
+            margin-bottom: 20px;
+        }
+        .audit-section p {
+            font-size: 22px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .terminal-snippet {
+            background-color: #000;
+            border-left: 4px solid #00FF41;
+            padding-top: 15px;
+            padding-left: 15px;
+            font-family: 'Fira Code', monospace;
+            font-size: 16px;
+            color: #00FF41;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <h2 class="header">Auditoría Móvil (Android/iOS)</h2>
+        <div class="main-grid">
+            <div class="audit-section">
+                <h3>Análisis Básico</h3>
+                <p>Extracción de metadatos críticos, permisos y versiones de SDK utilizando <span style="color: #00FF41;">aapt</span>.</p>
+                <div class="terminal-snippet">
+                    $ aapt dump badging app.apk<br>
+                    package: name='com.target.app'<br>
+                    sdkVersion:'21'<br>
+                    targetSdkVersion:'30'
+                </div>
+            </div>
+            <div class="audit-section">
+                <h3>Análisis Profundo</h3>
+                <p>Descompilación completa de archivos APK en código Smali y recursos con <span style="color: #00FF41;">apktool</span>.</p>
+                <div class="terminal-snippet">
+                    $ apktool d app.apk<br>
+                    I: Using Apktool 2.6.1<br>
+                    I: Loading resource table...<br>
+                    I: Decompiling code...
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

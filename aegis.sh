@@ -25,7 +25,7 @@ show_banner() {
     echo "               __/ |                                                "
     echo "              |___/                                                 "
     echo -e "${NC}"
-    echo -e "${PURPLE}      [ AegisTerminal v1.5 - The Shield of Security ]${NC}"
+    echo -e "${PURPLE}      [ AegisTerminal v1.6 - The Shield of Security ]${NC}"
     echo " --------------------------------------------------------------"
 }
 
@@ -38,7 +38,9 @@ main_menu() {
     echo -e "${GREEN}4)${NC} Brute Force Attacks (Hydra - SSH, FTP)"
     echo -e "${GREEN}5)${NC} Network Reconnaissance (Nmap Advanced)"
     echo -e "${GREEN}6)${NC} Exploitation Framework (Metasploit, Payloads)"
-    echo -e "${GREEN}7)${NC} Update AegisTerminal"
+    echo -e "${GREEN}7)${NC} Social Engineering (SET Toolkit)"
+    echo -e "${GREEN}8)${NC} Mobile Auditing (Android/iOS Analysis)"
+    echo -e "${GREEN}9)${NC} Update AegisTerminal"
     echo -e "${GREEN}0)${NC} Exit"
     echo ""
     read -p "Aegis > " choice
@@ -50,13 +52,57 @@ main_menu() {
         4) brute_force_menu ;;
         5) network_menu ;;
         6) exploit_menu ;;
-        7) update_tool ;;
+        7) social_menu ;;
+        8) mobile_menu ;;
+        9) update_tool ;;
         0) exit 0 ;;
         *) echo -e "${RED}[!] Invalid option${NC}"; sleep 1; main_menu ;;
     esac
 }
 
-# Módulo Wireless (Nuevo)
+# Módulo Social Engineering (Nuevo)
+social_menu() {
+    show_banner
+    echo -e "${BLUE}--- Social Engineering (SET) ---${NC}"
+    echo -e "1) Launch Social-Engineer Toolkit (SET)"
+    echo -e "0) Back"
+    echo ""
+    read -p "Aegis/Social > " soc_choice
+    case $soc_choice in
+        1) setoolkit ;;
+        0) main_menu ;;
+        *) social_menu ;;
+    esac
+}
+
+# Módulo Mobile Auditing (Nuevo)
+mobile_menu() {
+    show_banner
+    echo -e "${BLUE}--- Mobile Auditing ---${NC}"
+    echo -e "1) Basic APK Analysis (aapt)"
+    echo -e "2) Deep APK Analysis (apktool)"
+    echo -e "0) Back"
+    echo ""
+    read -p "Aegis/Mobile > " mob_choice
+    case $mob_choice in
+        1)
+            read -p "Enter path to APK: " apk_path
+            aapt dump badging "$apk_path" | grep -E 'package|sdkVersion|targetSdkVersion'
+            read -p "Press enter to continue..."
+            mobile_menu
+            ;;
+        2)
+            read -p "Enter path to APK: " apk_path
+            apktool d "$apk_path" -o "${apk_path}_decompiled"
+            read -p "Press enter to continue..."
+            mobile_menu
+            ;;
+        0) main_menu ;;
+        *) mobile_menu ;;
+    esac
+}
+
+# Módulo Wireless
 wifi_menu() {
     show_banner
     echo -e "${BLUE}--- Wireless Auditing (Aircrack-ng) ---${NC}"

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body { margin: 0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: 'Space Grotesk', sans-serif;
+            display: flex;
+            overflow: hidden;
+        }
+        .content-area {
+            flex: 1;
+            padding-top: 60px;
+            padding-left: 60px;
+        }
+        .image-area {
+            width: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .side-image {
+            width: 450px;
+            height: 300px;
+            object-fit: cover;
+            border: 2px solid #FF3333;
+        }
+        .header {
+            font-size: 48px;
+            color: #00FF41;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .feature-list {
+            list-style: none;
+            font-size: 24px;
+            line-height: 1.8;
+        }
+        .feature-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .icon-box {
+            width: 40px;
+            color: #FF3333;
+            font-size: 28px;
+            margin-right: 20px;
+        }
+        .terminal-output {
+            background-color: #000;
+            border: 1px solid #00FF41;
+            padding-top: 15px;
+            padding-left: 15px;
+            font-family: 'Fira Code', monospace;
+            font-size: 16px;
+            color: #00FF41;
+            width: 600px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-area">
+            <h2 class="header">Reconocimiento de Red</h2>
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <div class="icon-box"><i class="fas fa-mask"></i></div>
+                    <div>Gestión de Identidad: MAC & IP Anonymity</div>
+                </li>
+                <li class="feature-item">
+                    <div class="icon-box"><i class="fas fa-search"></i></div>
+                    <div>Nmap Avanzado: Stealth & Version Detection</div>
+                </li>
+                <li class="feature-item">
+                    <div class="icon-box"><i class="fas fa-bullseye"></i></div>
+                    <div>Análisis Agresivo: OS & Service Fingerprinting</div>
+                </li>
+            </ul>
+            <div class="terminal-output">
+                <div>root@aegis:~# nmap -sS -sV -T4 192.168.1.1</div>
+                <div style="margin-top: 5px;">Starting Nmap 7.92...</div>
+                <div style="margin-top: 5px;">Nmap scan report for target (192.168.1.1)</div>
+                <div style="margin-top: 5px;">PORT&nbsp;&nbsp;&nbsp;STATE SERVICE VERSION</div>
+                <div style="margin-top: 5px;">80/tcp&nbsp;open&nbsp;&nbsp;http&nbsp;&nbsp;&nbsp;&nbsp;Apache 2.4.41</div>
+            </div>
+        </div>
+        <div class="image-area">
+            <img src="/home/ubuntu/upload/search_images/3zzHLXSdZubu.jpg" class="side-image" alt="Nmap Recon">
+        </div>
+    </div>
+</body>
+</html>

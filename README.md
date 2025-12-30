@@ -16,6 +16,8 @@ El nombre **Aegis** (del griego antiguo *Aigis*, que significa "escudo") refleja
 | **Brute Force** | Ataques de fuerza bruta para servicios SSH y FTP. | `Hydra` |
 | **Network Recon** | Escaneo de puertos avanzado (Stealth, Versión, Agresivo). | `Nmap` |
 | **Exploitation** | Generación de Payloads con `msfvenom` y configuración de Listeners con `msfconsole`. | `Metasploit Framework` |
+| **Social Engineering** | Lanzamiento de la suite Social-Engineer Toolkit (SET). | `setoolkit` |
+| **Mobile Auditing** | Análisis básico y profundo (descompilación) de archivos APK. | `aapt`, `apktool` |
 
 ## 💻 Instalación (Kali Linux Recomendado)
 
@@ -35,7 +37,7 @@ El nombre **Aegis** (del griego antiguo *Aigis*, que significa "escudo") refleja
    sudo ./setup.sh
    ```
 
-   El script instalará dependencias como `git`, `curl`, `nmap`, `macchanger`, `aircrack-ng`, `ruby`, `Nikto`, `WPScan`, `Hydra` y `Metasploit Framework`.
+   El script instalará dependencias como `git`, `curl`, `nmap`, `macchanger`, `aircrack-ng`, `ruby`, `Nikto`, `WPScan`, `Hydra`, `Metasploit Framework`, **`setoolkit`**, **`aapt`** y **`apktool`**.
 
 ## ▶️ Uso
 
@@ -70,12 +72,6 @@ Este módulo utiliza la suite **aircrack-ng** para la auditoría de redes inalá
 | **2) Disable Monitor Mode** | `airmon-ng stop` | Devuelve la interfaz a modo gestionado. |
 | **3) Scan Networks** | `airodump-ng` | Escanea redes cercanas para obtener BSSID, canal y clientes. |
 | **4) Capture Handshake** | `airodump-ng` | Captura el handshake WPA/WPA2 de un punto de acceso específico. |
-
-**Ejemplo de Uso (Captura de Handshake):**
-
-1.  **Activar Modo Monitor:** Seleccione **1) Enable Monitor Mode** e ingrese su interfaz (ej. `wlan0`). Esto creará una nueva interfaz (ej. `wlan0mon`).
-2.  **Escanear:** Seleccione **3) Scan Networks** e ingrese la interfaz monitor (ej. `wlan0mon`). Identifique el BSSID y el canal del objetivo.
-3.  **Capturar:** Seleccione **4) Capture Handshake**. Ingrese la interfaz monitor, el BSSID del objetivo, el canal y un nombre de archivo de salida (ej. `handshake_target`).
 
 ### 3. Web Vulnerability Scanning
 
@@ -113,6 +109,42 @@ Este módulo automatiza la generación de payloads y la configuración de listen
 | :--- | :--- | :--- |
 | **1) Generate Payload** | `msfvenom` | Crea un payload de Meterpreter para Windows, Linux o Android. |
 | **2) Start Multi-Handler** | `msfconsole` | Configura y lanza un listener para recibir la conexión inversa del payload. |
+
+### 7. Social Engineering
+
+Este módulo lanza la suite **Social-Engineer Toolkit (SET)**, una herramienta líder para la simulación de ataques de ingeniería social.
+
+| Opción | Herramienta | Descripción |
+| :--- | :--- | :--- |
+| **1) Launch Social-Engineer Toolkit (SET)** | `setoolkit` | Inicia el menú interactivo de SET para crear ataques como spear-phishing, clonación de sitios web y más. |
+
+**Ejemplo de Uso (Phishing Ético):**
+
+1.  Inicie AegisTerminal: `aegis`
+2.  Seleccione **7) Social Engineering**.
+3.  Dentro de SET, seleccione **1) Social-Engineering Attacks**.
+4.  Seleccione **2) Website Attack Vectors**.
+5.  Seleccione **3) Credential Harvester Attack Method**.
+6.  Seleccione **2) Site Cloner**.
+7.  Ingrese la IP de su máquina (LHOST) y la URL del sitio web que desea clonar (ej. `https://www.facebook.com`).
+8.  SET clonará el sitio y levantará un servidor web en su máquina, esperando que la víctima ingrese sus credenciales en la página clonada.
+
+### 8. Mobile Auditing
+
+Este módulo facilita el análisis de aplicaciones Android (APK) para auditorías de seguridad.
+
+| Opción | Herramienta | Descripción |
+| :--- | :--- | :--- |
+| **1) Basic APK Analysis** | `aapt` | Muestra información básica del paquete, permisos y versiones SDK. |
+| **2) Deep APK Analysis** | `apktool` | Descompila el archivo APK en código Smali y recursos para un análisis profundo. |
+
+**Ejemplo de Uso (Análisis Profundo):**
+
+1.  Inicie AegisTerminal: `aegis`
+2.  Seleccione **8) Mobile Auditing**.
+3.  Seleccione **2) Deep APK Analysis**.
+4.  Ingrese la ruta completa al archivo APK (ej. `/home/user/app.apk`).
+5.  `apktool` creará un directorio con el código fuente y los recursos para su revisión manual.
 
 ## ⚠️ Descargo de Responsabilidad
 

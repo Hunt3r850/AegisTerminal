@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body { margin: 0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: 'Space Grotesk', sans-serif;
+            display: flex;
+            overflow: hidden;
+        }
+        .content-area {
+            flex: 1;
+            padding-top: 60px;
+            padding-left: 60px;
+        }
+        .image-area {
+            width: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1a1a1a;
+        }
+        .side-image {
+            width: 550px;
+            height: auto;
+            max-height: 600px;
+            object-fit: contain;
+            border: 1px solid #333;
+        }
+        .header {
+            font-size: 48px;
+            color: #00FF41;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .tool-card {
+            margin-bottom: 30px;
+            width: 550px;
+        }
+        .tool-name {
+            font-family: 'Fira Code', monospace;
+            font-size: 28px;
+            color: #FF3333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .tool-name i { margin-right: 15px; }
+        .tool-desc {
+            font-size: 20px;
+            line-height: 1.5;
+            padding-left: 43px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-area">
+            <h2 class="header">Escaneo Web Estratégico</h2>
+            <div class="tool-card">
+                <div class="tool-name"><i class="fas fa-globe"></i> Nikto</div>
+                <div class="tool-desc">Análisis exhaustivo de servidores web en busca de configuraciones inseguras, archivos peligrosos y CGIs obsoletos.</div>
+            </div>
+            <div class="tool-card">
+                <div class="tool-name"><i class="fab fa-wordpress"></i> WPScan</div>
+                <div class="tool-desc">Auditoría especializada para ecosistemas WordPress. Detección de plugins, temas y versiones del core vulnerables.</div>
+            </div>
+            <div style="margin-top: 40px; font-size: 18px; color: #666; font-family: 'Fira Code', monospace;">
+                [!] Identificación temprana de vectores de ataque.
+            </div>
+        </div>
+        <div class="image-area">
+            <img src="/home/ubuntu/upload/search_images/hXxcFezSpmEj.png" class="side-image" alt="Pentest Phases">
+        </div>
+    </div>
+</body>
+</html>

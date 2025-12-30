@@ -1,0 +1,92 @@
+{
+  "project_info": {
+    "title": "AegisTerminal: El Escudo de la Seguridad Digital",
+    "created": 1767010479.8159463,
+    "last_updated": 1767065414.538651,
+    "total_slides": 10
+  },
+  "slides": {
+    "slide_1_portada": "edited",
+    "slide_2_introduccion": "edited",
+    "slide_3_reconocimiento": "edited",
+    "slide_4_wireless": "edited",
+    "slide_5_web_scanning": "edited",
+    "slide_6_explotacion": "edited",
+    "slide_7_social_engineering": "edited",
+    "slide_8_mobile_auditing": "edited",
+    "slide_9_instalacion": "edited",
+    "slide_10_conclusion": "edited"
+  },
+  "outline": [
+    {
+      "id": "slide_1_portada",
+      "title": "AegisTerminal: El Escudo de la Seguridad Digital",
+      "summary": "Portada de la presentación con el título principal y propósito de la suite.",
+      "image_plan": "/home/ubuntu/upload/search_images/zhZPZypGDDwe.jpg - Image 1 is a strong visual for \"PENETRATION TEST\" and the title slide, showing a professional interacting with a security interface.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_2_introduccion",
+      "title": "Introducción y Filosofía de AegisTerminal",
+      "summary": "Explicación del concepto y la filosofía de automatización de la suite.",
+      "image_plan": "/home/ubuntu/upload/search_images/JvABCmufEn6N.jpg - Image 2 shows a digital padlock over binary code, symbolizing security, automation, and the digital nature of the suite.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_3_reconocimiento",
+      "title": "Reconocimiento de Red y Sistema Avanzado",
+      "summary": "Detalles sobre la gestión de identidad y escaneos avanzados con Nmap.",
+      "image_plan": "/home/ubuntu/upload/search_images/3zzHLXSdZubu.jpg - Image 6, while abstract, features a large eye and a Linux-like penguin, which can represent the \"reconocimiento\" (reconnaissance) and the use of Linux-based tools like Nmap.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_4_wireless",
+      "title": "Auditoría Inalámbrica (WiFi) Profesional",
+      "summary": "Capacidades de la suite aircrack-ng integradas para auditoría inalámbrica.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_5_web_scanning",
+      "title": "Escaneo de Vulnerabilidades Web Estratégico",
+      "summary": "Uso de Nikto y WPScan para identificar vectores de ataque en aplicaciones web.",
+      "image_plan": "/home/ubuntu/upload/search_images/hXxcFezSpmEj.png - Image 5 illustrates the typical phases of a pentest (Scanning, Vulnerability Assessment, Exploitation, Reporting), which aligns well with the web vulnerability scanning phase.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_6_explotacion",
+      "title": "Fuerza Bruta y Explotación con Metasploit",
+      "summary": "Automatización de ataques de fuerza bruta y generación de payloads.",
+      "image_plan": "/home/ubuntu/upload/search_images/56oxldVR8Hah.png - Image 4 is a diagram explicitly showing the Metasploit framework's role in a network attack chain, including exploitation and pivoting, which is highly relevant to this slide's content (Hydra and Metasploit).",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_7_social_engineering",
+      "title": "Ingeniería Social con SET Toolkit",
+      "summary": "Simulación de ataques basados en el factor humano mediante SET.",
+      "image_plan": "/home/ubuntu/upload/search_images/4f3uZ0UfQMML.png - Image 7 provides a clear, illustrative breakdown of social engineering tactics, directly matching the slide's focus on the SET Toolkit.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_8_mobile_auditing",
+      "title": "Auditoría Móvil: Análisis de APKs Profundo",
+      "summary": "Herramientas para el análisis estático y descompilación de aplicaciones móviles.",
+      "image_plan": "",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_9_instalacion",
+      "title": "Instalación, Escalabilidad y Modularidad",
+      "summary": "Facilidad de despliegue y estructura modular para el crecimiento de la suite.",
+      "image_plan": "/home/ubuntu/upload/search_images/OfwPyfN9jRpK.jpg - Image 3 is a general, high-quality background related to \"PENETRATION TEST\" and cyber security, suitable for a technical slide about installation and scalability.",
+      "slide_template_key": ""
+    },
+    {
+      "id": "slide_10_conclusion",
+      "title": "Conclusión y Compromiso Ético de AegisTerminal",
+      "summary": "Resumen final y recordatorio sobre el uso responsable y ético de la herramienta.",
+      "image_plan": "/home/ubuntu/upload/search_images/d8Q6HM4vCLUz.png - Image 8 is a mind map of various social engineering techniques, which is suitable for the concluding slide on ethics and the broad scope of the tool. (Image 7 was used for the dedicated social engineering slide).",
+      "slide_template_key": ""
+    }
+  ]
+}

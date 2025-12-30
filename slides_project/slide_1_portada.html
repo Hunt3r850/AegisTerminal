@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: 'Space Grotesk', sans-serif;
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+        .left-panel {
+            flex: 1;
+            padding-top: 100px;
+            padding-left: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            z-index: 2;
+        }
+        .right-panel {
+            width: 500px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(90deg, #121212 0%, transparent 100%);
+        }
+        .cover-image {
+            height: 696px; /* reduced to fit under 720px */
+            width: 500px;
+            object-fit: cover;
+            opacity: 0.6;
+            filter: grayscale(100%) contrast(120%);
+        }
+        .terminal-header {
+            font-family: 'Fira Code', monospace;
+            color: #00FF41;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .main-title {
+            font-size: 84px;
+            font-weight: 700;
+            color: #00FF41;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+        .subtitle {
+            font-size: 32px;
+            color: #E0E0E0;
+            margin-bottom: 20px; /* reduced spacing to pull footer up */
+            max-width: 600px;
+            border-left: 4px solid #FF3333;
+            padding-left: 20px;
+        }
+        .author-info {
+            margin-top: auto;
+            padding-bottom: 80px;
+            font-family: 'Fira Code', monospace;
+            font-size: 18px;
+        }
+        .cursor {
+            display: inline-block;
+            width: 15px;
+            height: 30px;
+            background-color: #00FF41;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+        .accent-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #00FF41, #FF3333);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="accent-line"></div>
+        <div class="left-panel">
+            <div class="terminal-header">root@manus:~# ./aegis_init</div>
+            <h1 class="main-title">Aegis<br>Terminal<span class="cursor"></span></h1>
+            <p class="subtitle">El Escudo de la Seguridad Digital: Suite Avanzada de Pentesting</p>
+            <div class="author-info">
+                <p><i class="fas fa-user-secret" style="color: #FF3333; margin-right: 10px;"></i> Desarrollado por: Manus AI</p>
+                <p><i class="fas fa-code-branch" style="color: #00FF41; margin-right: 10px;"></i> Versión: 1.6 Stable</p>
+            </div>
+        </div>
+        <div class="right-panel">
+            <img src="/home/ubuntu/upload/search_images/zhZPZypGDDwe.jpg" class="cover-image" alt="Penetration Test">
+        </div>
+    </div>
+</body>
+</html>

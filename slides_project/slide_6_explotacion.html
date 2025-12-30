@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body { margin: 0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: 'Space Grotesk', sans-serif;
+            display: flex;
+            overflow: hidden;
+        }
+        .content-area {
+            flex: 1;
+            padding-top: 60px;
+            padding-left: 60px;
+        }
+        .image-area {
+            width: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff; /* White background for the diagram to be clear */
+        }
+        .side-image {
+            width: 580px;
+            height: auto;
+            object-fit: contain;
+        }
+        .header {
+            font-size: 48px;
+            color: #00FF41;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .section-title {
+            font-family: 'Fira Code', monospace;
+            font-size: 24px;
+            color: #FF3333;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            width: 500px;
+        }
+        .content-text {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+        .accent { color: #00FF41; }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-area">
+            <h2 class="header">Fuerza Bruta y Explotación</h2>
+            
+            <div class="section-title">Hydra: Brute Force</div>
+            <div class="content-text">
+                Ataques automatizados contra servicios críticos (<span class="accent">SSH, FTP</span>). Soporte para wordlists personalizadas y multithreading para máxima eficiencia.
+            </div>
+
+            <div class="section-title">Metasploit Framework</div>
+            <div class="content-text">
+                Generación de payloads con <span class="accent">msfvenom</span> y configuración de listeners con <span class="accent">msfconsole</span>. Demostración de impacto real mediante la obtención de acceso.
+            </div>
+        </div>
+        <div class="image-area">
+            <img src="/home/ubuntu/upload/search_images/56oxldVR8Hah.png" class="side-image" alt="Metasploit Framework">
+        </div>
+    </div>
+</body>
+</html>

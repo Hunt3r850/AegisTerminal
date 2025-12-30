@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* remove default body margin so slide top aligns at 0 */
+        body { margin: 0; }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: #121212;
+            color: #E0E0E0;
+            font-family: 'Space Grotesk', sans-serif;
+            display: flex;
+            overflow: hidden;
+        }
+        .content-area {
+            flex: 1;
+            padding-top: 60px; /* keep title top padding as required */
+            padding-left: 60px;
+        }
+        .image-area {
+            width: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .side-image {
+            width: 450px;
+            height: 450px;
+            object-fit: cover;
+            border: 2px solid #00FF41;
+        }
+        .header {
+            font-size: 48px;
+            color: #00FF41;
+            margin-bottom: 36px; /* slightly reduced spacing to tighten layout */
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        .code-block {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            padding-top: 14px; /* reduced inner padding */
+            padding-left: 14px;
+            font-family: 'Fira Code', monospace;
+            margin-bottom: 20px; /* reduced spacing */
+            width: 600px;
+        }
+        .code-line {
+            margin-bottom: 8px; /* tighter lines */
+            font-size: 18px;
+        }
+        .comment { color: #666; }
+        .keyword { color: #FF3333; }
+        .string { color: #00FF41; }
+        .philosophy-text {
+            font-size: 22px;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+        .philosophy-text p { margin-top: 14px; margin-bottom: 0; }
+        .accent-marker {
+            color: #FF3333;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="content-area">
+            <h2 class="header">Introducción y Filosofía</h2>
+            <div class="code-block">
+                <div class="code-line"><span class="comment">// AegisTerminal Core Concept</span></div>
+                <div class="code-line"><span class="keyword">class</span> <span class="string">AegisTerminal</span> {</div>
+                <div class="code-line">&nbsp;&nbsp;vision = <span class="string">"Centralized Automation"</span>;</div>
+                <div class="code-line">&nbsp;&nbsp;goal = <span class="string">"Strategic Focus"</span>;</div>
+                <div class="code-line">}</div>
+            </div>
+            <div class="philosophy-text">
+                <p><span class="accent-marker">_</span>AegisTerminal centraliza las herramientas más potentes en una interfaz modular.</p>
+                <p><span class="accent-marker">_</span>Filosofía: "Automatizar lo repetitivo para centrarse en lo estratégico".</p>
+                <p><span class="accent-marker">_</span>Inspiración: Basado en la eficiencia de suites clásicas como lscript, con un enfoque moderno.</p>
+            </div>
+        </div>
+        <div class="image-area">
+            <img src="/home/ubuntu/upload/search_images/JvABCmufEn6N.jpg" class="side-image" alt="Digital Security">
+        </div>
+    </div>
+</body>
+</html>
