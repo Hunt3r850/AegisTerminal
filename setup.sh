@@ -2,7 +2,7 @@
 
 # ============================================================================
 # AegisTerminal - Installation & Dependency Manager
-# Version: 1.7 Stable (Robust Edition)
+# Version: 1.8 Stable (Clean Edition)
 # Purpose: Automated installation of all dependencies for AegisTerminal suite
 # ============================================================================
 
@@ -18,13 +18,13 @@ NC='\033[0m' # No Color
 echo -e "${CYAN}"
 echo "╔════════════════════════════════════════════════════════════════╗"
 echo "║                  AegisTerminal Installation Wizard             ║"
-echo "║                    Version 1.7 - Robust Release               ║"
-╚════════════════════════════════════════════════════════════════╝"
+echo "║                    Version 1.8 - Clean Release                ║"
+echo "╚════════════════════════════════════════════════════════════════╝"
 echo -e "${NC}"
 
 # Check if running as root
 if [ "$EUID" -ne 0 ]; then 
-  echo -e "${RED}[!] Error: This script must be run as root (sudo ./setup.sh)${NC}"
+  echo -e "${RED}[!] Error: Please run as root using sudo ./setup.sh${NC}"
   exit 1
 fi
 
@@ -48,26 +48,17 @@ echo -e "${YELLOW}[*] Step 1/5: Updating system package lists...${NC}"
 if apt-get update -y; then
   echo -e "${GREEN}[+] Package lists updated successfully${NC}\n"
 else
-  echo -e "${YELLOW}[!] Warning: Failed to update package lists. Continuing anyway...${NC}\n"
+  echo -e "${YELLOW}[!] Warning: Failed to update package lists. Continuing...${NC}\n"
 fi
 
-# Install core dependencies one by one for robustness
+# Install core dependencies
 echo -e "${YELLOW}[*] Step 2/5: Installing core dependencies...${NC}"
 CORE_DEPS=("git" "curl" "wget" "net-tools" "macchanger" "nmap" "aircrack-ng" "hydra" "python3" "python3-pip" "ruby-full" "build-essential" "libcurl4-openssl-dev" "libxml2" "libxml2-dev" "libxslt1-dev" "ruby-dev")
 
-FAILED_CORE=()
 for pkg in "${CORE_DEPS[@]}"; do
-    if ! install_pkg "$pkg"; then
-        FAILED_CORE+=("$pkg")
-    fi
+    install_pkg "$pkg"
 done
-
-if [ ${#FAILED_CORE[@]} -eq 0 ]; then
-    echo -e "${GREEN}[+] All core dependencies installed successfully${NC}\n"
-else
-    echo -e "${YELLOW}[!] Warning: Some core dependencies failed to install: ${FAILED_CORE[*]}${NC}"
-    echo -e "${YELLOW}    Check your internet connection or repositories.${NC}\n"
-fi
+echo ""
 
 # Install Social Engineering Toolkit (SET)
 echo -e "${YELLOW}[*] Step 3/5: Installing Social Engineering Toolkit (SET)...${NC}"
@@ -80,6 +71,7 @@ if ! command -v setoolkit &> /dev/null; then
             cd setoolkit
             python3 setup.py install > /dev/null 2>&1
             echo -e "${GREEN}[+] setoolkit installed from source${NC}"
+            cd - > /dev/null
         fi
     fi
 else
@@ -102,6 +94,7 @@ for pkg in "${MOBILE_DEPS[@]}"; do
             chmod +x apktool
             ln -sf /opt/apktool/apktool /usr/local/bin/apktool
             echo -e "${GREEN}[+] apktool installed manually${NC}"
+            cd - > /dev/null
         fi
     fi
 done
@@ -133,7 +126,6 @@ echo ""
 
 # Set file permissions
 echo -e "${YELLOW}[*] Setting file permissions...${NC}"
-cd /home/ubuntu/AegisTerminal # Ensure we are in the right directory
 chmod +x aegis.sh > /dev/null 2>&1
 chmod -R +x modules/ > /dev/null 2>&1
 echo -e "${GREEN}[+] Permissions set successfully${NC}\n"
@@ -152,7 +144,6 @@ echo -e "${CYAN}[*] Verifying installations...${NC}\n"
 
 TOOLS=("nmap" "airmon-ng" "hydra" "nikto" "wpscan" "setoolkit" "aapt" "apktool")
 INSTALLED=0
-MISSING=0
 
 for tool in "${TOOLS[@]}"; do
     if command -v $tool &> /dev/null; then
@@ -160,7 +151,6 @@ for tool in "${TOOLS[@]}"; do
         ((INSTALLED++))
     else
         echo -e "${YELLOW}[✗] $tool (not found)${NC}"
-        ((MISSING++))
     fi
 done
 
@@ -172,7 +162,7 @@ echo -e "${CYAN}║                   Installation Complete!                    
 echo -e "${CYAN}╚════════════════════════════════════════════════════════════════╝${NC}\n"
 
 echo -e "${GREEN}[+] AegisTerminal has been installed!${NC}"
-echo -e "${GREEN}[+] Tools verified: $INSTALLED installed, $MISSING missing${NC}\n"
+echo -e "${GREEN}[+] Tools verified: $INSTALLED installed${NC}\n"
 
 echo -e "${YELLOW}[*] To start using AegisTerminal, simply type:${NC}"
 echo -e "${CYAN}    aegis${NC}\n"
