@@ -345,4 +345,4 @@ Para preguntas, sugerencias o reportes de errores, abra un issue en el repositor
 
 **Versión:** 1.6 Stable  
 **Última Actualización:** Diciembre 2025  
-**Desarrollado por:** Manus AI
+**Desarrollado por:** AHByte
