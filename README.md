@@ -284,7 +284,7 @@ Se ha generado una **presentación profesional de 10 diapositivas** que resume t
 Para visualizar la presentación de diapositivas, utilice el siguiente enlace:
 
 ```
-https://github.com/Hunt3r850/AegisTerminal/blob/master/slides_project/AegisTerminal_El_Escudo_de_la_Seguridad_Digital.pptx
+https://github.com/Hunt3r850/AegisTerminal/blob/master/slides_project/AegisTerminal_El_Escudo_de_la_Seguridad_Digital.pdf
 ```
 
 O acceda directamente desde el directorio del proyecto:
